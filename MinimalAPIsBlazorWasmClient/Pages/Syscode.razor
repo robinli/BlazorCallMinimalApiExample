@@ -1,0 +1,50 @@
+﻿@page "/"
+@page "/syscode"
+
+<h1>Miscode 系統代碼</h1>
+
+<EditForm Model="@Model">
+    <form class="row row-cols-lg-auto g-3 align-items-center">
+      <div class="col-12">
+        <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
+        <div class="input-group">
+          <div class="input-group-text">CKIND</div>
+          <InputText id="CKIND" class="form-control" @bind-Value="Model.CKIND"></InputText>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <button type="button" class="btn btn-primary" @onclick="Query">查詢</button>
+      </div>
+    </form>
+</EditForm>
+
+
+@if (ListSyscode == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CKIND</th>
+                <th>CODE_NO</th>
+                <th>CODE_NAME</th>
+                <th>DESCTXT</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ListSyscode)
+            {
+                <tr>
+                    <td>@item.CKIND</td>
+                    <td>@item.CODE_NO</td>
+                    <td>@item.CODE_NAME</td>
+                    <td>@item.DESCTXT</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
